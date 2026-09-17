@@ -78,6 +78,7 @@ class ChipsLayer extends PositionComponent {
     _builtForWidth = layout.boardCardWidth;
     _potPaint = TextPaint(
       style: TextStyle(
+        fontFamily: kFontFamily,
         color: GamePalette.textPrimary,
         fontSize: layout.boardCardWidth * 0.34,
         height: 1,
@@ -90,6 +91,7 @@ class ChipsLayer extends PositionComponent {
     );
     _betPaint = TextPaint(
       style: TextStyle(
+        fontFamily: kFontFamily,
         color: GamePalette.textSecondary,
         fontSize: layout.boardCardWidth * 0.26,
         height: 1,

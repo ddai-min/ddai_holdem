@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 
+/// 앱에 넣어 둔 한글 글꼴.
+///
+/// Flutter 웹은 기본 글꼴조차 구글 CDN 에서 받아 온다. 그동안은 글자가 통째로
+/// 비어 보이고, 연결이 막히면 끝내 안 나온다. 한글로만 된 화면이라 치명적이라
+/// 글꼴을 앱에 함께 넣고 처음부터 이것만 쓴다.
+///
+/// Flame 의 [TextPaint] 는 위젯 테마를 타지 않으므로 테이블을 그리는 쪽에서도
+/// 이 이름을 직접 얹어야 한다.
+const String kFontFamily = 'NotoSansKR';
+
 /// 화면과 Flame 컴포넌트가 함께 쓰는 색.
 ///
 /// 어두운 방에 초록 테이블 하나를 놓은 그림으로 고정한다. 값을 바꾸면 UI와
@@ -57,7 +67,11 @@ abstract final class GamePalette {
 }
 
 ThemeData buildGameTheme() {
-  final base = ThemeData.dark(useMaterial3: true);
+  final base = ThemeData(
+    brightness: Brightness.dark,
+    useMaterial3: true,
+    fontFamily: kFontFamily,
+  );
   return base.copyWith(
     scaffoldBackgroundColor: GamePalette.background,
     colorScheme: base.colorScheme.copyWith(
@@ -75,7 +89,11 @@ ThemeData buildGameTheme() {
         foregroundColor: GamePalette.background,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+        textStyle: const TextStyle(
+          fontFamily: kFontFamily,
+          fontSize: 15,
+          fontWeight: FontWeight.w700,
+        ),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -104,11 +122,17 @@ ThemeData buildGameTheme() {
         borderRadius: BorderRadius.circular(12),
         borderSide: const BorderSide(color: GamePalette.accent, width: 1.6),
       ),
-      labelStyle: const TextStyle(color: GamePalette.textSecondary),
+      labelStyle: const TextStyle(
+        fontFamily: kFontFamily,
+        color: GamePalette.textSecondary,
+      ),
     ),
     snackBarTheme: const SnackBarThemeData(
       backgroundColor: GamePalette.surfaceHigh,
-      contentTextStyle: TextStyle(color: GamePalette.textPrimary),
+      contentTextStyle: TextStyle(
+        fontFamily: kFontFamily,
+        color: GamePalette.textPrimary,
+      ),
       behavior: SnackBarBehavior.floating,
     ),
   );

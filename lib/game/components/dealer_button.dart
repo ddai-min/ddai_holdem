@@ -59,6 +59,7 @@ class DealerButton extends PositionComponent {
     _builtForRadius = _radius;
     _labelPaint = TextPaint(
       style: TextStyle(
+        fontFamily: kFontFamily,
         color: GamePalette.suitBlack,
         fontSize: _radius * 1.1,
         height: 1,

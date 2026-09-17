@@ -256,6 +256,7 @@ class SeatComponent extends PositionComponent {
     final unit = size.y;
     _namePaint = TextPaint(
       style: TextStyle(
+        fontFamily: kFontFamily,
         color: GamePalette.textSecondary,
         fontSize: unit * 0.24,
         height: 1,
@@ -264,6 +265,7 @@ class SeatComponent extends PositionComponent {
     );
     _chipsPaint = TextPaint(
       style: TextStyle(
+        fontFamily: kFontFamily,
         color: GamePalette.textPrimary,
         fontSize: unit * 0.32,
         height: 1,
@@ -273,6 +275,7 @@ class SeatComponent extends PositionComponent {
     );
     _actionPaint = TextPaint(
       style: TextStyle(
+        fontFamily: kFontFamily,
         color: GamePalette.accent,
         fontSize: unit * 0.24,
         height: 1,

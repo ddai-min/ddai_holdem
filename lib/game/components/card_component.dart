@@ -207,6 +207,7 @@ class CardComponent extends PositionComponent {
     _inkColor = ink;
     _cornerPaint = TextPaint(
       style: TextStyle(
+        fontFamily: kFontFamily,
         color: ink,
         fontSize: size.x * 0.42,
         height: 1,
@@ -215,6 +216,7 @@ class CardComponent extends PositionComponent {
     );
     _centerPaint = TextPaint(
       style: TextStyle(
+        fontFamily: kFontFamily,
         color: ink,
         fontSize: size.x * 0.56,
         height: 1,

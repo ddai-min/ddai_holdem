@@ -99,6 +99,18 @@ fvm flutter test
 자리는 카드가 테이블 안쪽으로 뻗는다. 같은 값을 쓰면 세로 화면에서 위쪽 자리
 카드가 화면 밖으로 잘린다.
 
+### 글꼴
+
+한글 글꼴은 `assets/fonts/`에 넣고 테마의 `fontFamily`로 고정한다. Flutter 웹은
+기본 글꼴조차 `fonts.gstatic.com`에서 런타임에 받아 오기 때문에, 그대로 두면 첫
+프레임이 빈 글자로 뜨고 그 CDN이 막힌 자리에서는 이름도 칩도 카드 끗수도 끝내
+나오지 않는다.
+
+Flame의 `TextPaint`는 위젯 테마를 타지 않는다. 이름표·칩·카드·딜러 버튼을 그리는
+`TextStyle`에는 `kFontFamily`를 직접 얹어야 한다. 빠뜨리면 그 글자만 조용히
+기본 글꼴로 돌아간다. `test/ui/font_test.dart`가 이 둘을 지키지만, 글꼴을 손봤다면
+`fonts.gstatic.com`을 막아 둔 브라우저로 한 번 열어 보는 편이 확실하다.
+
 ### Flame을 쓸 때 걸렸던 것
 
 `onLoad` 안에서 `add`를 기다리면 안 된다. 컴포넌트가 실제로 붙는 것은 `onLoad`가
