@@ -23,8 +23,8 @@ firebase deploy --only hosting
 나머지 파일(canvaskit 등)은 기본 한 시간 캐시에 맡긴다. 그 뒤로는 ETag로
 확인만 하므로 다시 내려받지 않는다.
 
-콜드 로딩은 brotli 압축 기준 약 3.6MB다(`main.dart.js` 0.8MB +
-`canvaskit.wasm` 2.8MB). Firebase 무료 요금제의 하루 전송량이 360MB이니
+콜드 로딩은 brotli 압축 기준 약 3.7MB다(`main.dart.js` 0.6MB +
+`canvaskit.wasm` 2.8MB + 한글 글꼴 두 벌 0.34MB). Firebase 무료 요금제의 하루 전송량이 360MB이니
 하루 100번 남짓의 첫 방문까지는 넉넉하다. 한 번 받은 사람은 캐시를 쓴다.
 
 내리려면:
