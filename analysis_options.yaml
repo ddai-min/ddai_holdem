@@ -1,0 +1,7 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    # Firebase의 Swift Package 체크아웃이 여기에 풀린다. 남의 Dart 코드까지
+    # 같이 분석되면 우리 코드의 경고가 그 속에 묻힌다.
+    - build/**

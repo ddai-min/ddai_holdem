@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!--
+    루트가 아닌 경로에서 서비스한다면 이 값을 그 경로로 바꾼다. `flutter build`의
+    `--base-href` 인자로도 덮어쓸 수 있다.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="친구들과 방 코드 하나로 즐기는 텍사스 홀덤.">
+  <meta name="theme-color" content="#0B1210">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="DDAI 홀덤">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>DDAI 홀덤</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    /* Flutter가 뜨기 전까지 흰 화면이 번쩍이지 않도록 배경을 미리 깔아 둔다.
+       어두운 테이블 화면으로 넘어갈 때 눈이 부시지 않는다. */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #0B1210;
+      overscroll-behavior: none;
+    }
+    #loading {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      gap: 14px;
+      align-content: center;
+      color: #8DA396;
+      font: 600 14px -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+            "Segoe UI", sans-serif;
+    }
+    #loading .suit {
+      font-size: 34px;
+      color: #D9A84E;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.35; }
+      50%      { opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #loading .suit { animation: none; opacity: 0.8; }
+    }
+  </style>
+</head>
+<body>
+  <div id="loading">
+    <div class="suit">♠</div>
+    <div>테이블을 펴는 중…</div>
+  </div>
+
+  <script>
+    // Flutter가 첫 프레임을 그리면 로딩 화면을 걷어낸다.
+    window.addEventListener('flutter-first-frame', function () {
+      var loading = document.getElementById('loading');
+      if (loading) { loading.remove(); }
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

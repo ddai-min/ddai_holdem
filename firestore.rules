@@ -1,0 +1,64 @@
+rules_version = '2';
+
+// DDAI 홀덤 보안 규칙.
+//
+// 핵심은 하나다: 남의 홀 카드는 어떤 경로로도 읽히면 안 된다.
+// 그래서 문서를 네 갈래로 나눠 둔다.
+//
+//   rooms/{code}                공개 테이블 상태. 홀 카드가 들어가지 않는다.
+//   rooms/{code}/private/{uid}  그 사람만 읽는 홀 카드.
+//   rooms/{code}/secret/host    남은 덱과 모두의 홀 카드. 방장만 읽는다.
+//   rooms/{code}/commands/{id}  참가자 요청. 자기 것만 넣을 수 있다.
+//
+// 테이블 상태를 쓸 수 있는 사람은 방장뿐이다. 참가자는 요청만 남기고,
+// 규칙 판정은 방장 기기의 엔진이 한다.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isHostOf(roomId) {
+      return signedIn()
+        && get(/databases/$(database)/documents/rooms/$(roomId)).data.hostUid
+           == request.auth.uid;
+    }
+
+    match /rooms/{roomId} {
+      // 코드를 아는 사람은 테이블을 볼 수 있다. 여기에는 공개 정보만 있다.
+      allow read: if signedIn();
+
+      // 방을 만들 때 방장이 정해진다. 이미 쓰고 있는 코드면 create가 아니라
+      // update가 되어 막히고, 앱은 다른 코드로 다시 시도한다.
+      allow create: if signedIn()
+                    && request.resource.data.hostUid == request.auth.uid;
+
+      // 방장만 테이블을 갱신할 수 있고, 방장을 바꿔치기할 수는 없다.
+      allow update: if signedIn()
+                    && resource.data.hostUid == request.auth.uid
+                    && request.resource.data.hostUid == resource.data.hostUid;
+
+      allow delete: if signedIn()
+                    && resource.data.hostUid == request.auth.uid;
+
+      // 각자에게만 보이는 홀 카드.
+      match /private/{uid} {
+        allow read: if signedIn() && request.auth.uid == uid;
+        allow write: if isHostOf(roomId);
+      }
+
+      // 남은 덱과 모두의 홀 카드. 방장이 판을 이어 가는 데만 쓴다.
+      match /secret/{docId} {
+        allow read, write: if isHostOf(roomId);
+      }
+
+      // 참가자 요청. 남의 이름으로 보낼 수 없고, 읽고 지우는 것은 방장뿐이다.
+      match /commands/{commandId} {
+        allow create: if signedIn()
+                      && request.resource.data.uid == request.auth.uid;
+        allow read, delete: if isHostOf(roomId);
+      }
+    }
+  }
+}

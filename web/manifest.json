@@ -1,0 +1,36 @@
+{
+    "name": "DDAI 홀덤",
+    "short_name": "DDAI 홀덤",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0B1210",
+    "theme_color": "#0B1210",
+    "description": "친구들과 방 코드 하나로 즐기는 텍사스 홀덤.",
+    "orientation": "any",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "lang": "ko"
+}

@@ -1,0 +1,21 @@
+// Application-level settings for the Runner target.
+//
+// This may be replaced with something auto-generated from metadata (e.g., pubspec.yaml) in the
+// future. If not, the values below would default to using the project name when this becomes a
+// 'flutter create' template.
+
+// The application's name. By default this is also the title of the Flutter window.
+PRODUCT_NAME = ddai_holdem
+
+// The application's bundle identifier
+PRODUCT_BUNDLE_IDENTIFIER = com.ddai.holdem
+
+// The copyright displayed in application information
+PRODUCT_COPYRIGHT = Copyright © 2026 ddai. All rights reserved.
+
+// macOS에서 온라인 대전을 쓰려면 아래 세 줄의 주석을 푼다.
+// DebugProfile.entitlements의 keychain-access-groups도 함께 풀어야 한다.
+// 자세한 절차는 README의 "macOS에서 온라인 대전 쓰기".
+// DEVELOPMENT_TEAM = 2AVYTNZCAX
+// CODE_SIGN_IDENTITY = Apple Development
+// CODE_SIGN_STYLE = Automatic

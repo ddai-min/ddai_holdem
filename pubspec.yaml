@@ -1,0 +1,25 @@
+name: ddai_holdem
+description: "친구들과 온라인으로 즐기는 텍사스 홀덤."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  cloud_firestore: ^6.10.0
+  firebase_auth: ^6.7.0
+  firebase_core: ^4.15.0
+  flame: ^1.38.2
+  flutter:
+    sdk: flutter
+  meta: ^1.16.0
+  shared_preferences: ^2.5.5
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

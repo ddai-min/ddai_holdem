@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "761702960773",
+    "project_id": "ddai-holdem",
+    "storage_bucket": "ddai-holdem.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761702960773:android:6bfb28a72249e5ed15e3ec",
+        "android_client_info": {
+          "package_name": "com.ddai.holdem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdOOWAxPf0yujsXA7xEveNJI4A_vRV-uk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
